@@ -25,7 +25,7 @@ Things you may want to cover:
 
 
 ## users table
-性別カラムについては以下を参照し，Male	1 (one)	Female	2 (two)	とする．
+gender columnについては以下を参照し，Male	1 (one)	Female	2 (two)	とする．
 https://qiita.com/aoshirobo/items/32deb45cb8c8b87d65a4
 
 |Column|Type|Options|
