@@ -32,10 +32,10 @@ https://qiita.com/aoshirobo/items/32deb45cb8c8b87d65a4
 |------|----|-------|
 |cust_last_name|string|null: false|
 |cust_first_name|string|null: false|
-|cust_email_address|string|null: false|
+|cust_email_address|string|null: false, unique: true|
 |gender|string|null: false|
 |encrypted_password|string|null: false|
-|phone|string|null: false|
+|phone|string|null: false, unique: true|
 |birth_date|date|null: false|
 |proxy_last_name|string|null: false|
 |proxy_first_name|string|null: false|
