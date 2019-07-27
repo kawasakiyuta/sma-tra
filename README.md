@@ -46,6 +46,8 @@ https://qiita.com/aoshirobo/items/32deb45cb8c8b87d65a4
 
 
 ## services table
+解約に必要な事項にビットを立てる．
+（例：必要なら1，不要なら0）
 
 |Column|Type|Options|
 |------|----|-------|
@@ -53,7 +55,7 @@ https://qiita.com/aoshirobo/items/32deb45cb8c8b87d65a4
 |req_email_address|integer|null: false|
 |req_password|integer|null: false|
 |req_phone|integer|null: false|
-|req_birth_date|date|null: false|
+|req_birth_date|integer|null: false|
 
 ### Association
 - has_many :subscriptions
