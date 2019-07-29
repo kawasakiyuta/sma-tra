@@ -48,6 +48,7 @@ https://qiita.com/aoshirobo/items/32deb45cb8c8b87d65a4
 |phone|string||
 |birth_date|date||
 |last_login_at|datetime|null: false|
+|in_use|integer|null: false|
 
 ### Association
 - belongs_to :user
