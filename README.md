@@ -37,7 +37,7 @@ https://qiita.com/aoshirobo/items/32deb45cb8c8b87d65a4
 ### Association
 - has_many :subscriptions
 
-## subscription table
+## subscriptions table
 
 |Column|Type|Options|
 |------|----|-------|
