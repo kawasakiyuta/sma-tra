@@ -38,6 +38,7 @@ https://qiita.com/aoshirobo/items/32deb45cb8c8b87d65a4
 - has_many :subscriptions
 
 ## subscriptions table
+in_useにビットを立てる． （例：契約中なら1，解約済みなら0）
 
 |Column|Type|Options|
 |------|----|-------|
