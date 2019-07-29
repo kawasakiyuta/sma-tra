@@ -47,7 +47,6 @@ in_useにビットを立てる． （例：契約中なら1，解約済みなら
 |email_address|string|null: false|
 |password|string|null: false|
 |phone|string||
-|birth_date|date||
 |last_login_at|datetime|null: false|
 |in_use|integer|null: false|
 
