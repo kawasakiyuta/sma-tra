@@ -1,0 +1,51 @@
+.black-text.row.format
+  %h3.center Who are you?
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field.col.s6.center
+      %i.material-icons.red-text email
+      %br/
+      = f.label :email
+      %br/
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+    .field.col.s6.center
+      %i.material-icons.red-text vpn_key
+      %br/
+      = f.label :password
+      %br/
+      = f.password_field :password, autocomplete: "current-password"
+    .deep-orange.lighten-4.actions.waves-effect.waves-light.btn.right
+      = f.submit "Log in"
+
+-# .slider.format.margin_top-100
+-#   %ul.slides
+-#     %li
+-#       %img{:src => "https://images.unsplash.com/photo-1521092375781-38696f9841fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"}/
+-#       / random image
+-#       .caption.center-align
+-#         %h3
+-#           smatra
+-#           %br>/
+          
+-#         %h5.light.grey-text.text-lighten-3 This is a space for you to make your dream come true
+-#     %li
+-#       %img{:src => "https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1971&q=80"}/
+-#       / random image
+-#       .caption.left-align
+-#         %h3
+-#           smatra
+-#           %br>/
+          
+-#         %h5.light.grey-text.text-lighten-3 You can make a map of your life
+-#     %li
+-#       %img{:src => "https://images.unsplash.com/photo-1484744358184-a8ce5e4af7ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"}/
+-#       / random image
+-#       .caption.right-align
+-#         %h3 smatra
+        
+-#     %li
+-#       %img{:src => "https://images.unsplash.com/photo-1536602012356-86c345795580?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"}/
+-#       / random image
+-#       .caption.center-align
+-#         %h3 smatra
+-#         %h5.light.grey-text.text-lighten-3 Let's get started.
+

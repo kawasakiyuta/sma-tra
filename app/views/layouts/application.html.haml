@@ -1,0 +1,156 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Sma-Tra
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"}
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    / Import Google Icon Font
+    %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
+    / Let browser know website is optimized for mobile
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+  %body
+    %header
+      %nav.z-depth-1
+        .nav-wrapper.white
+          = image_tag '/smatra_logo.jpeg', size: "110x55", class: "brand-logo"
+          %a.sidenav-trigger.red-text{"data-target" => "mobile-demo", :href => ""}
+            %i.material-icons menu
+          %ul.right.hide-on-med-and-down
+            -# - if user_signed_in?
+            -#   %li
+            -#     %a.dropdown-trigger.black-text.width_200{"data-target" => "dropdown1", :href => "#"}
+            -#       = current_user.cust_first_name
+            -#       = succeed "'s" do
+            -#         %i.material-icons.right.red-text arrow_drop_down
+            -#   %ul#dropdown1.dropdown-content
+            -#     %li
+            -#       = link_to destroy_user_session_path, method: :delete, class: "black-text" do
+            -#         %i.material-icons.red-text exit_to_app
+            -#         exit
+            -#     %li.divider
+            -#     %li
+            -#       = link_to "/", method: :get, class: "black-text" do
+            -#         %i.material-icons.red-text directions_walk
+                    
+            -#     %li.divider
+            -#     %li
+            -#       = link_to "/s", method: :get, class: "black-text" do
+            -#         %i.material-icons.red-text directions_walk
+            -#         Dreams
+            -#     %li.divider
+            -#     %li
+            -#       = link_to "/act3", method: :get, class: "black-text" do
+            -#         %i.material-icons.red-text directions_walk
+            -#         Wall
+            -#     %li.divider
+            -# - else
+            -#   %li
+            -#     = link_to "", class: "btn-floating btn-large dropdown-trigger pulse red",:data => {:target=>"dropdown1"} do
+            -#       %i.material-icons.white-text.center accessibility
+            -#   %ul#dropdown1.dropdown-content
+            -#     %li
+            -#       = link_to new_user_session_path, method: :get, class: "black-text center" do
+            -#         %i.material-icons.red-text.right face
+            -#         ENTER
+            -#     %li.divider
+            -#     %li
+            -#       = link_to new_user_registration_path, method: :get, class: "black-text center " do
+            -#         %i.material-icons.red-text.right person_add
+            -#         SIGN UP
+        - if user_signed_in?
+          %ul#mobile-demo.sidenav
+            
+            %li
+              = link_to subscriptions_path, method: :get, class: "black-text" do
+                %i.material-icons.red-text directions_walk
+                サブスクリプションの登録
+            %li
+              = link_to services_path, method: :get, class: "black-text" do
+                %i.material-icons.red-text directions_walk
+                SmaTra対応サービス一覧
+            %li
+              = link_to destroy_user_session_path, method: :delete, class: "black-text" do
+                %i.material-icons.red-text exit_to_app
+                exit
+        - else
+          %ul#mobile-demo.sidenav
+            %li
+              = link_to new_user_session_path, method: :get, class: "black-text center" do
+                %i.material-icons.red-text> face
+                ENTER
+            %li
+              = link_to new_user_registration_path, method: :get, class: "black-text center " do
+                %i.material-icons.red-text> person_add
+                SIGN UP
+    = yield
+    - if user_signed_in?
+      .fixed-action-btn
+        = link_to "#", method: :get, class: "btn-floating red btn-large" do
+          %i.material-icons.white-text pan_tool
+        %ul
+          %li
+            = link_to "https://calendar.google.com/calendar/r", class: "btn-floating yellow btn-large tooltipped", 'data-tooltip' => 'Calender', 'data-position' => 'left' do
+              %i.material-icons.white-text date_range
+          %li
+            = link_to "https://docs.google.com/spreadsheets/", class: "btn-floating blue btn-large tooltipped", 'data-tooltip' => 'Progress', 'data-position' => 'left'  do
+              %i.material-icons.white-text laptop_mac
+          %li
+            = link_to "https://app.mindmup.com/map/new/", class: "btn-floating green btn-large tooltipped", 'data-tooltip' => 'Mindmap', 'data-position' => 'left'  do
+              %i.material-icons.white-text blur_on
+          %li
+            = link_to new_subscription_path, method: :get, class: "btn-floating purple btn-large tooltipped", 'data-tooltip' => 'New Upload', 'data-position' => 'left'  do
+              %i.material-icons.white-text publish
+    %footer
+      %p.center
+        Copyright Sma-Tra 2019.
+    :javascript
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems);
+      });
+    :javascript
+      document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.dropdown-trigger');
+      var instances = M.Dropdown.init(elems);
+      });
+    :javascript
+      document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+      });
+    :javascript
+      document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.tooltipped');
+          var instances = M.Tooltip.init(elems);
+        });
+    :javascript
+      document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.materialboxed');
+          var instances = M.Materialbox.init(elems);
+        });
+    :javascript
+      $(function(){
+        $(".delete_btn").on('click', function(){
+            if(window.confirm("データを削除しますがよろしいですか？")) {
+                location.href = $(this).attr('href');
+            } else {
+                return false;
+            }
+        });
+      });
+    :javascript
+      document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.slider');
+          var instances = M.Slider.init(elems);
+        });
+            $(function() {
+      
+              $("#title-input").on("keyup", function(){
+                var charNum = String($(this).val().length);
+                $("#char-count").text(charNum + "文字");
+              });
+              // $(".vision_card").fadeIn(2000);
+            });
