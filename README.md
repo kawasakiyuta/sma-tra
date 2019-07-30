@@ -48,8 +48,9 @@ subscriptions tableのin_useを、0: 契約中、1: 解約処理中、2: 解約�
 |email_address|string|null: false|
 |password|string|null: false|
 |phone|string||
-|last_login_at|datetime|null: false|
+|last_login_at|datetime||
 |in_use|integer|null: false|
+|contract_number|string||
 
 ### Association
 - belongs_to :user
