@@ -38,7 +38,8 @@ https://qiita.com/aoshirobo/items/32deb45cb8c8b87d65a4
 - has_many :subscriptions
 
 ## subscriptions table
-in_useにビットを立てる． （例：契約中なら1，解約済みなら0）
+subscriptions tableのin_useを、0: 契約中、1: 解約処理中、2: 解約済み　の3フラグ持てるようにし,
+画面からボタントリガに1: 解約処理中に変更できるようにする
 
 |Column|Type|Options|
 |------|----|-------|
