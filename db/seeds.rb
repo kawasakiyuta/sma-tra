@@ -8,6 +8,5 @@
 
 # coding: utf-8
 
-Service.create(:name => '観察日記', :sales_date => '2011-11-14', :price => 1000)
-Service.create(:name => 'Simple Life', :sales_date => '2012-02-08', :price => 2300)
-Service.create(:name => 'メガネ入門', :sales_date => '2011-10-25', :price => 800)
+Service.create(service_name: 'CookPad', req_email_address: 1, req_password: 0, req_phone: 1, req_birth_date: 0)
+Service.create(service_name: 'Twitter', req_email_address: 1, req_password: 0, req_phone: 1, req_birth_date: 0)
