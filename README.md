@@ -33,6 +33,7 @@ https://qiita.com/aoshirobo/items/32deb45cb8c8b87d65a4
 |req_password|integer|null: false|
 |req_phone|integer|null: false|
 |req_birth_date|integer|null: false|
+|req_contract_number|string||
 
 ### Association
 - has_many :subscriptions
