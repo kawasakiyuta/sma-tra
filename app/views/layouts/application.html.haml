@@ -66,7 +66,7 @@
             %li
               = link_to subscriptions_path, method: :get, class: "black-text" do
                 %i.material-icons.red-text directions_walk
-                サブスクリプションの登録
+                契約中のサブスクリプション
             %li
               = link_to services_path, method: :get, class: "black-text" do
                 %i.material-icons.red-text directions_walk
@@ -86,62 +86,52 @@
                 %i.material-icons.red-text> person_add
                 SIGN UP
     = yield
-    - if user_signed_in?
-      .fixed-action-btn
-        = link_to "#", method: :get, class: "btn-floating red btn-large" do
-          %i.material-icons.white-text pan_tool
-        %ul
-          %li
-            = link_to "https://calendar.google.com/calendar/r", class: "btn-floating yellow btn-large tooltipped", 'data-tooltip' => 'Calender', 'data-position' => 'left' do
-              %i.material-icons.white-text date_range
-          %li
-            = link_to "https://docs.google.com/spreadsheets/", class: "btn-floating blue btn-large tooltipped", 'data-tooltip' => 'Progress', 'data-position' => 'left'  do
-              %i.material-icons.white-text laptop_mac
-          %li
-            = link_to "https://app.mindmup.com/map/new/", class: "btn-floating green btn-large tooltipped", 'data-tooltip' => 'Mindmap', 'data-position' => 'left'  do
-              %i.material-icons.white-text blur_on
-          %li
-            = link_to new_subscription_path, method: :get, class: "btn-floating purple btn-large tooltipped", 'data-tooltip' => 'New Upload', 'data-position' => 'left'  do
-              %i.material-icons.white-text publish
+    -# - if user_signed_in?
+    -#   .fixed-action-btn
+    -#     = link_to "#", method: :get, class: "btn-floating red btn-large" do
+    -#       %i.material-icons.white-text pan_tool
+    -#     %ul
+    -#       %li
+    -#         = link_to "https://calendar.google.com/calendar/r", class: "btn-floating yellow btn-large tooltipped", 'data-tooltip' => 'Calender', 'data-position' => 'left' do
+    -#           %i.material-icons.white-text date_range
+    -#       %li
+    -#         = link_to "https://docs.google.com/spreadsheets/", class: "btn-floating blue btn-large tooltipped", 'data-tooltip' => 'Progress', 'data-position' => 'left'  do
+    -#           %i.material-icons.white-text laptop_mac
+    -#       %li
+    -#         = link_to "https://app.mindmup.com/map/new/", class: "btn-floating green btn-large tooltipped", 'data-tooltip' => 'Mindmap', 'data-position' => 'left'  do
+    -#           %i.material-icons.white-text blur_on
+    -#       %li
+    -#         = link_to new_subscription_path, method: :get, class: "btn-floating purple btn-large tooltipped", 'data-tooltip' => 'New Upload', 'data-position' => 'left'  do
+    -#           %i.material-icons.white-text publish
     %footer
       %p.center
         Copyright Sma-Tra 2019.
+        
     :javascript
       document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.fixed-action-btn');
         var instances = M.FloatingActionButton.init(elems);
       });
-    :javascript
       document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.dropdown-trigger');
       var instances = M.Dropdown.init(elems);
       });
-    :javascript
+
       document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.sidenav');
       var instances = M.Sidenav.init(elems);
       });
-    :javascript
+
       document.addEventListener('DOMContentLoaded', function() {
           var elems = document.querySelectorAll('.tooltipped');
           var instances = M.Tooltip.init(elems);
         });
-    :javascript
+
       document.addEventListener('DOMContentLoaded', function() {
           var elems = document.querySelectorAll('.materialboxed');
           var instances = M.Materialbox.init(elems);
         });
-    :javascript
-      $(function(){
-        $(".delete_btn").on('click', function(){
-            if(window.confirm("データを削除しますがよろしいですか？")) {
-                location.href = $(this).attr('href');
-            } else {
-                return false;
-            }
-        });
-      });
-    :javascript
+
       document.addEventListener('DOMContentLoaded', function() {
           var elems = document.querySelectorAll('.slider');
           var instances = M.Slider.init(elems);
@@ -154,3 +144,14 @@
               });
               // $(".vision_card").fadeIn(2000);
             });
+
+      document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.modal');
+          var instances = M.Modal.init(elems);
+        });
+      window.onpageshow = function(event) {
+        if (event.persisted) {
+          window.location.reload();
+        }
+      };
+
