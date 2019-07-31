@@ -6,6 +6,7 @@ class CreateServices < ActiveRecord::Migration[5.0]
       t.integer :req_password,              null: false
       t.integer :req_phone,              null: false
       t.integer :req_birth_date,              null: false
+      t.integer :req_contract_number,         null: false
 
       t.timestamps
     end
