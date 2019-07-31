@@ -13,13 +13,14 @@
 ActiveRecord::Schema.define(version: 20190730052457) do
 
   create_table "services", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "service_name",      null: false
-    t.integer  "req_email_address", null: false
-    t.integer  "req_password",      null: false
-    t.integer  "req_phone",         null: false
-    t.integer  "req_birth_date",    null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string   "service_name",        null: false
+    t.integer  "req_email_address",   null: false
+    t.integer  "req_password",        null: false
+    t.integer  "req_phone",           null: false
+    t.integer  "req_birth_date",      null: false
+    t.integer  "req_contract_number", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "subscriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
