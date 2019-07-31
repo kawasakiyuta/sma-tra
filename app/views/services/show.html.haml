@@ -1,0 +1,42 @@
+#{@service.service_name}
+#{@service.req_email_address}
+#{@service.req_password}
+#{@service.req_phone}
+#{@service.req_birth_date}
+#{@service.req_contract_number}
+%br  
+|service_name|string|null: false| 
+%br  
+|req_email_address|integer|null: false|
+%br  
+|req_password|integer|null: false|
+%br  
+|req_phone|integer|null: false|
+%br  
+|req_birth_date|integer|null: false|
+%br  
+|req_contract_number|string||
+%br  
+
+= form_for @subscription, url: subscriptions_path do |f|
+
+  .field.col.s6.center  
+    = f.email_field :email_address, placeholder: 'メールアドレスを入力してください'
+  .field.col.s6.center  
+    = f.text_field :password, placeholder: 'パスワードを入力してください'
+  .field.col.s6.center  
+    = f.text_field :phone, placeholder: '電話番号を入力してください'
+  .field.col.s6.center  
+    = f.text_field :contract_number, placeholder: '契約番号を入力してください'
+  .field.col.s6.center
+    = f.submit "Sign up"
+
+
+|user_id|integer|null: false, foreign_key: true|
+|service_id|integer|null: false, foreign_key: true|
+|email_address|string|null: false|
+|password|string|null: false|
+|phone|string||
+|last_login_at|datetime||
+|in_use|integer|null: false|
+|contract_number|string||
