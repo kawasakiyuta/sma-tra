@@ -1,0 +1,22 @@
+#{@subscription.service.service_name}について
+
+
+- if @subscription.in_use == 1
+  %p
+  解約処理中です
+-else
+  = form_for @subscription do |f|
+    .field.col.s6.center  
+      = f.email_field :email_address, placeholder: '#{@subscription.mail_address}', type:"hidden"
+    .field.col.s6.center  
+      = f.text_field :password, placeholder: '#{@subscription.password}', type:"hidden"
+    .field.col.s6.center  
+      = f.text_field :phone, placeholder: '#{@subscription.phone}', type:"hidden"
+    .field.col.s6.center  
+      = f.text_field :contract_number, placeholder: '#{@subscription.contract_number}', type:"hidden"
+    .field.col.s6.center  
+      = f.text_field :service_id, placeholder:'#{@subscription.service_id}', type: "hidden"
+    .field.col.s6.center  
+      = f.text_field :in_use, type:"hidden", value: 1
+    .field.col.s6.center
+      = f.submit "解約する！！"
