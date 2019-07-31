@@ -5,11 +5,7 @@
   %h6.center.title SmaTra対応サービス一覧
   %blockquote.format
 
-
-
 %ul.collection.with-header
-  %li.collection-header
-    %h4 
   - @services.each do |service|
     %li.collection-item 
       =link_to "/services/#{service.id}" , method: :get do
