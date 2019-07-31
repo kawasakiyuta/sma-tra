@@ -5,4 +5,9 @@
   %h6.center.title 契約中のサブスクリプション
   %blockquote.format
 
-  
+  - @subscriptions.each do |subscription|
+    %li.collection-item 
+      =link_to "/subscriptions/#{subscription.id}" , method: :get do
+        #{subscription.service.service_name}
+    %li.collection-item 
+      in_useカラム　#{subscription.in_use}
