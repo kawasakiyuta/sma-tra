@@ -45,6 +45,3 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
-
-# nginxの設定に必要？
-bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
