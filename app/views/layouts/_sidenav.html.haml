@@ -14,12 +14,12 @@
             #{@user.email}
     %li
       = link_to subscriptions_path, method: :get, class: "black-text" do
-        %i.material-icons.red-text directions_walk
-        契約中のサブスクリプション
+        %i.material-icons.red-text folder_shared
+        あなたのサブスクリプション
     %li
       = link_to services_path, method: :get, class: "black-text" do
-        %i.material-icons.red-text directions_walk
-        SmaTra対応サービス一覧
+        %i.material-icons.red-text create_new_folder
+        やめTAP対応サービス一覧
     %li
       = link_to destroy_user_session_path, method: :delete, class: "black-text" do
         %i.material-icons.red-text exit_to_app
