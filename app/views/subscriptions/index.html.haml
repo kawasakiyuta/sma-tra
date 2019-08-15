@@ -11,10 +11,12 @@
           = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
           #{subscription.service.service_name}
           %span.fontsize
-            - if ((@today - subscription.last_login_at)/@one_day_seconds).round == 0
+            - if subscription.last_login_at && ((@today - subscription.last_login_at)/@one_day_seconds).round == 0
               本日ログインしました
-            - else
+            - elsif subscription.last_login_at
               #{((@today - subscription.last_login_at)/@one_day_seconds).round}日間 ログインしてません．
+            -else
+              ログイン履歴がありません
           - if subscription.in_use == 1
             %span.badge.red.white-text.margintop10.radius4
               解約処理中

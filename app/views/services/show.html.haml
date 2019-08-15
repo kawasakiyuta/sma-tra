@@ -1,35 +1,26 @@
-#{@service.service_name}
-#{@service.req_email_address}
-#{@service.req_password}
-#{@service.req_phone}
-#{@service.req_birth_date}
-#{@service.req_contract_number}
-%br  
-|service_name|string|null: false| 
-%br  
-|req_email_address|integer|null: false|
-%br  
-|req_password|integer|null: false|
-%br  
-|req_phone|integer|null: false|
-%br  
-|req_birth_date|integer|null: false|
-%br  
-|req_contract_number|string||
-%br  
+.card.row.grid-1
+  .card-content
+    %span.card-title.activator.grey-text.text-darken-4
+      = image_tag "/#{@service.id}.jpg", size: "30x30", class: ""
+      #{@service.service_name} 登録画面
 
-= form_for @subscription do |f|
-  .field.col.s6.center  
-    = f.email_field :email_address, placeholder: 'メールアドレスを入力してください'
-  .field.col.s6.center  
-    = f.text_field :password, placeholder: 'パスワードを入力してください'
-  .field.col.s6.center  
-    = f.text_field :phone, placeholder: '電話番号を入力してください'
-  .field.col.s6.center  
-    = f.text_field :contract_number, placeholder: '契約番号を入力してください'
-  .field.col.s6.center  
-    = f.text_field :service_id, placeholder:'#{@service.id}', type: "hidden"
-  .field.col.s6.center  
-    = f.text_field :in_use, type:"hidden", value: 0
-  .field.col.s6.center
-    = f.submit "Sign up"
+.margintop10
+  = form_for @subscription do |f|
+    .field.col.s6.center  
+      %i.material-icons.red-text email
+      = f.email_field :email_address, placeholder: 'メールアドレスを入力してください', class: "center"
+    .field.col.s6.center  
+      %i.material-icons.red-text vpn_key
+      = f.text_field :password, placeholder: 'パスワードを入力してください', class: "center"
+    .field.col.s6.center  
+      %i.material-icons.red-text phone
+      = f.text_field :phone, placeholder: '電話番号を入力してください', class: "center"
+    .field.col.s6.center
+      %i.material-icons.red-text money
+      = f.text_field :contract_number, placeholder: '契約番号を入力してください', class: "center"
+    .field.col.s6.center  
+      = f.text_field :service_id, placeholder:'#{@service.id}', type: "hidden"
+    .field.col.s6.center  
+      = f.text_field :in_use, type:"hidden", value: 0
+    .field.col.s6.center
+      = f.submit "登録する", class: "white-text btn red margintop10"
