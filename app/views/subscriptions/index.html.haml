@@ -1,7 +1,7 @@
 - if user_signed_in?
   %h5.center
     %i.material-icons.red-text.small directions_walk
-    %span.red.white-text "Your Subscription"
+    %span.red.white-text.radius4.padding2 "Your Subscription"
   %h6.center.title 契約中のサブスクリプション
   %blockquote.format
   - @subscriptions.each do |subscription|
@@ -16,13 +16,13 @@
             - else
               #{((@today - subscription.last_login_at)/@one_day_seconds).round}日間 ログインしてません．
           - if subscription.in_use == 1
-            %span.badge.red.white-text.margintop10
+            %span.badge.red.white-text.margintop10.radius4
               解約処理中
           - elsif subscription.in_use == 0
-            %span.badge.green.white-text.margintop10
+            %span.badge.green.white-text.margintop10.radius4
               契約中
           - else
-            %span.badge.grey.white-text.margintop10
+            %span.badge.grey.white-text.margintop10.radius4
               解約済み
       .card-reveal
         %span.card-title.grey-text.text-darken-4
