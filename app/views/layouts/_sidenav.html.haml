@@ -1,0 +1,37 @@
+- if user_signed_in?
+  %ul#mobile-demo.sidenav
+    %li
+      .user-view
+        .background
+          = image_tag '/books.jpg', size: "", class: "brand-logo"
+        = link_to "#", method: :get, class: "" do
+          = image_tag '/zukupan.jpg', size: "", class: "circle"
+        = link_to "#", method: :get, class: "" do
+          %span.white-text.name
+            #{@user.cust_last_name}
+        = link_to "#", method: :get, class: "" do
+          %span.white-text.email
+            #{@user.email}
+    %li
+      = link_to subscriptions_path, method: :get, class: "black-text" do
+        %i.material-icons.red-text directions_walk
+        契約中のサブスクリプション
+    %li
+      = link_to services_path, method: :get, class: "black-text" do
+        %i.material-icons.red-text directions_walk
+        SmaTra対応サービス一覧
+    %li
+      = link_to destroy_user_session_path, method: :delete, class: "black-text" do
+        %i.material-icons.red-text exit_to_app
+        exit
+
+- else
+  %ul#mobile-demo.sidenav
+    %li
+      = link_to new_user_session_path, method: :get, class: "black-text center" do
+        %i.material-icons.red-text> face
+        ENTER
+    %li
+      = link_to new_user_registration_path, method: :get, class: "black-text center " do
+        %i.material-icons.red-text> person_add
+        SIGN UP

@@ -1,8 +1,8 @@
 class SubscriptionsController < ApplicationController
+  before_action :user_info
   def index
-    user = current_user
-    @subscriptions = user.subscriptions
-    
+    @today = Time.new
+    @one_day_seconds = 60 * 60 * 24
   end
 
   def show
@@ -15,7 +15,7 @@ class SubscriptionsController < ApplicationController
     @subscription.save
     user = current_user
     @subscriptions = user.subscriptions
-    render :index
+    redirect_to action: 'index'
   end
 
   def update
@@ -25,12 +25,16 @@ class SubscriptionsController < ApplicationController
     end
     user = current_user
     @subscriptions = user.subscriptions
-    render :index
+    redirect_to action: 'index'
   end
 
 
   private
 
+  def user_info
+    @user = current_user
+    @subscriptions = @user.subscriptions
+  end
   def subscription_params
     params.require(:subscription).permit(:email_address, :password, :phone, :contract_number, :service_id, :in_use).merge(user_id: current_user.id)
   end

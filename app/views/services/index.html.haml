@@ -7,8 +7,9 @@
 
 %ul.collection.with-header
   - @services.each do |service|
-    %li.collection-item 
-      =link_to "/services/#{service.id}" , method: :get do
-        #{service.service_name}
-
-
+    .card.row.grid-1
+      .card-content
+        %span.card-title.activator.grey-text.text-darken-4
+          =link_to "/services/#{service.id}" , method: :get do
+            = image_tag "/#{service.id}.jpg", size: "30x30", class: ""
+            #{service.service_name}

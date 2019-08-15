@@ -1,0 +1,74 @@
+
+.row {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 660px;
+  *zoom: 1;
+}
+.row .grid-1,
+.row .grid-2,
+.row .grid-3,
+.row .grid-4,
+.row .grid-5,
+.row .grid-6,
+.row .grid-7,
+.row .grid-8,
+.row .grid-9,
+.row .grid-10,
+.row .grid-11,
+.row .grid-12 {
+  float: left;
+  margin-left: 0.9%;
+  margin-right: 0.9%;
+}
+.row .grid-1 {
+  width: 6.53333%;
+}
+.row .grid-2 {
+  width: 14.86667%;
+}
+.row .grid-3 {
+  width: 23.2%;
+}
+.row .grid-4 {
+  width: 31.53333%;
+}
+.row .grid-5 {
+  width: 39.86667%;
+}
+.row .grid-6 {
+  width: 48.2%;
+}
+.row .grid-7 {
+  width: 56.53333%;
+}
+.row .grid-8 {
+  width: 64.86667%;
+}
+.row .grid-9 {
+  width: 73.2%;
+}
+.row .grid-10 {
+  width: 81.53333%;
+}
+.row .grid-11 {
+  width: 89.86667%;
+}
+.row .grid-12 {
+  width: 98.2%;
+}
+
+.fontsize {
+  font-size: 10px;
+}
+
+.margintop30 {
+  margin-top: 30px;
+  margin-left: calc(100vw/2 - 62px);
+}
+.margintop10 {
+  margin-top: 10px;
+}

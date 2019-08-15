@@ -4,10 +4,46 @@
     %span.red.white-text "Your Subscription"
   %h6.center.title 契約中のサブスクリプション
   %blockquote.format
-
   - @subscriptions.each do |subscription|
-    %li.collection-item 
-      =link_to "/subscriptions/#{subscription.id}" , method: :get do
-        #{subscription.service.service_name}
-    %li.collection-item 
-      in_useカラム　#{subscription.in_use}
+    .card.row.grid-1
+      .card-content
+        %span.card-title.activator.grey-text.text-darken-4
+          = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
+          #{subscription.service.service_name}
+          %span.fontsize
+            - if ((@today - subscription.last_login_at)/@one_day_seconds).round == 0
+              本日ログインしました
+            - else
+              #{((@today - subscription.last_login_at)/@one_day_seconds).round}日間 ログインしてません．
+          - if subscription.in_use == 1
+            %span.badge.red.white-text.margintop10
+              解約処理中
+          - elsif subscription.in_use == 0
+            %span.badge.green.white-text.margintop10
+              契約中
+          - else
+            %span.badge.grey.white-text.margintop10
+              解約済み
+      .card-reveal
+        %span.card-title.grey-text.text-darken-4
+          %i.material-icons.right close
+          - if subscription.in_use == 1
+            %span
+              = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
+              解約処理中です...
+          -elsif subscription.in_use == 0
+            = form_for subscription do |f|
+              = f.email_field :email_address, placeholder: '#{subscription.mail_address}', type:"hidden"
+              = f.text_field :password, placeholder: '#{subscription.password}', type:"hidden"
+              = f.text_field :phone, placeholder: '#{subscription.phone}', type:"hidden"
+              = f.text_field :contract_number, placeholder: '#{subscription.contract_number}', type:"hidden"
+              = f.text_field :service_id, placeholder:'#{subscription.service_id}', type: "hidden"
+              = f.text_field :in_use, type:"hidden", value: 1
+              = f.submit "解約する", class: "white-text btn red"
+          -else
+            = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
+            解約済みです
+
+%buttonarea
+  %p.white-text.btn.red.margintop30
+    すべて解約する
