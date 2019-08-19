@@ -10,22 +10,25 @@
         %span.card-title.activator.grey-text.text-darken-4
           = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
           #{subscription.service.service_name}
-          %span.fontsize
-            - if subscription.last_login_at && ((@today - subscription.last_login_at)/@one_day_seconds).round == 0
-              本日ログインしました
-            - elsif subscription.last_login_at
-              #{((@today - subscription.last_login_at)/@one_day_seconds).round}日間 ログインしてません．
-            -else
-              ログイン履歴がありません
-          - if subscription.in_use == 1
-            %span.badge.red.white-text.margintop10.radius4
-              解約処理中
-          - elsif subscription.in_use == 0
-            %span.badge.green.white-text.margintop10.radius4
-              契約中
-          - else
-            %span.badge.grey.white-text.margintop10.radius4
-              解約済み
+          %span.status
+            - if subscription.in_use == 1
+              %span.badge.red.white-text.margintop10.radius4
+                解約処理中
+            - elsif subscription.in_use == 0
+              %span.badge.green.white-text.margintop10.radius4
+                契約中
+            - else
+              %span.badge.grey.white-text.margintop10.radius4
+                解約済み
+          %br
+            %span.fontsize
+              - if subscription.last_login_at && ((@today - subscription.last_login_at)/@one_day_seconds).round == 0
+                本日ログインしました
+              - elsif subscription.last_login_at
+                #{((@today - subscription.last_login_at)/@one_day_seconds).round}日間 ログインしてません．
+              -else
+                ログイン履歴がありません
+            
       .card-reveal
         %span.card-title.grey-text.text-darken-4
           %i.material-icons.right close
