@@ -8,7 +8,7 @@
   = form_for @subscription do |f|
     .field.col.s6.center  
       %i.material-icons.red-text email
-      = f.email_field :email_address, placeholder: 'メールアドレスを入力してください', class: "center"
+      = f.text_field :email_address, placeholder: 'メールアドレスを入力してください', class: "center"
     .field.col.s6.center  
       %i.material-icons.red-text vpn_key
       = f.text_field :password, placeholder: 'パスワードを入力してください', class: "center"
