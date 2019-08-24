@@ -47,7 +47,7 @@
           -else
             = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
             解約済みです
-  %h5.center.title 解約処理中
+  
   - @canceling_subscriptions.each do |subscription|
     .card.row.grid-1
       .card-content
@@ -91,7 +91,7 @@
           -else
             = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
             解約済みです
-  %h5.center 解約済み
+  
   - @nouse_subscriptions.each do |subscription|
     .card.row.grid-1
       .card-content
