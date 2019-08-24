@@ -3,6 +3,10 @@ class SubscriptionsController < ApplicationController
   def index
     @today = Time.new
     @one_day_seconds = 60 * 60 * 24
+    @inuse_subscriptions = @subscriptions.where(in_use: 0)
+    @canceling_subscriptions = @subscriptions.where(in_use: 1)
+    @nouse_subscriptions = @subscriptions.where(in_use: 2)
+
   end
 
   def show

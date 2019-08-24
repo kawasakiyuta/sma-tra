@@ -1,10 +1,10 @@
 - if user_signed_in?
   %h5.center
-    %i.material-icons.red-text.small folder_shared
+    %i.material-icons.small.red-text folder_shared
     %span.red.white-text.radius4.padding2 "My Subscription"
   %h6.center.title わたしのサブスクリプション
   %blockquote.format
-  - @subscriptions.each do |subscription|
+  - @inuse_subscriptions.each do |subscription|
     .card.row.grid-1
       .card-content
         %span.card-title.activator.grey-text.text-darken-4
@@ -28,7 +28,94 @@
                 #{((@today - subscription.last_login_at)/@one_day_seconds).round}日間 ログインしてません．
               -else
                 ログイン履歴がありません
-            
+      .card-reveal
+        %span.card-title.grey-text.text-darken-4
+          %i.material-icons.right close
+          - if subscription.in_use == 1
+            %span
+              = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
+              解約処理中です...
+          -elsif subscription.in_use == 0
+            = form_for subscription do |f|
+              = f.email_field :email_address, placeholder: '#{subscription.mail_address}', type:"hidden"
+              = f.text_field :password, placeholder: '#{subscription.password}', type:"hidden"
+              = f.text_field :phone, placeholder: '#{subscription.phone}', type:"hidden"
+              = f.text_field :contract_number, placeholder: '#{subscription.contract_number}', type:"hidden"
+              = f.text_field :service_id, placeholder:'#{subscription.service_id}', type: "hidden"
+              = f.text_field :in_use, type:"hidden", value: 1
+              = f.submit "解約する", class: "white-text btn red"
+          -else
+            = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
+            解約済みです
+  %h5.center.title 解約処理中
+  - @canceling_subscriptions.each do |subscription|
+    .card.row.grid-1
+      .card-content
+        %span.card-title.activator.grey-text.text-darken-4
+          = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
+          #{subscription.service.service_name}
+          %span.status
+            - if subscription.in_use == 1
+              %span.badge.red.white-text.margintop10.radius4
+                解約処理中
+            - elsif subscription.in_use == 0
+              %span.badge.green.white-text.margintop10.radius4
+                契約中
+            - else
+              %span.badge.grey.white-text.margintop10.radius4
+                解約済み
+          %br
+            %span.fontsize
+              - if subscription.last_login_at && ((@today - subscription.last_login_at)/@one_day_seconds).round == 0
+                本日ログインしました
+              - elsif subscription.last_login_at
+                #{((@today - subscription.last_login_at)/@one_day_seconds).round}日間 ログインしてません．
+              -else
+                ログイン履歴がありません
+      .card-reveal
+        %span.card-title.grey-text.text-darken-4
+          %i.material-icons.right close
+          - if subscription.in_use == 1
+            %span
+              = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
+              解約処理中です...
+          -elsif subscription.in_use == 0
+            = form_for subscription do |f|
+              = f.email_field :email_address, placeholder: '#{subscription.mail_address}', type:"hidden"
+              = f.text_field :password, placeholder: '#{subscription.password}', type:"hidden"
+              = f.text_field :phone, placeholder: '#{subscription.phone}', type:"hidden"
+              = f.text_field :contract_number, placeholder: '#{subscription.contract_number}', type:"hidden"
+              = f.text_field :service_id, placeholder:'#{subscription.service_id}', type: "hidden"
+              = f.text_field :in_use, type:"hidden", value: 1
+              = f.submit "解約する", class: "white-text btn red"
+          -else
+            = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
+            解約済みです
+  %h5.center 解約済み
+  - @nouse_subscriptions.each do |subscription|
+    .card.row.grid-1
+      .card-content
+        %span.card-title.activator.grey-text.text-darken-4
+          = image_tag "/#{subscription.service.id}.jpg", size: "30x30", class: ""
+          #{subscription.service.service_name}
+          %span.status
+            - if subscription.in_use == 1
+              %span.badge.red.white-text.margintop10.radius4
+                解約処理中
+            - elsif subscription.in_use == 0
+              %span.badge.green.white-text.margintop10.radius4
+                契約中
+            - else
+              %span.badge.grey.white-text.margintop10.radius4
+                解約済み
+          %br
+            %span.fontsize
+              - if subscription.last_login_at && ((@today - subscription.last_login_at)/@one_day_seconds).round == 0
+                本日ログインしました
+              - elsif subscription.last_login_at
+                #{((@today - subscription.last_login_at)/@one_day_seconds).round}日間 ログインしてません．
+              -else
+                ログイン履歴がありません
       .card-reveal
         %span.card-title.grey-text.text-darken-4
           %i.material-icons.right close
@@ -52,3 +139,17 @@
 %buttonarea
   %p.white-text.btn.red.margintop30
     すべて解約する
+.bottomnav  
+  %nav.mobile-bottom-nav
+    = link_to subscriptions_path, method: :get, class: "mobile-bottom-nav__item mobile-bottom-nav__item--active" do
+      .mobile-bottom-nav__item-content
+        %i.material-icons.height20 folder_shared
+        My Subsc
+    = link_to services_path, method: :get, class: "mobile-bottom-nav__item mobile-bottom-nav__item" do
+      .mobile-bottom-nav__item-content
+        %i.material-icons.height20 create_new_folder
+        Add Subsc
+    = link_to destroy_user_session_path, method: :delete, class: "mobile-bottom-nav__item" do
+      .mobile-bottom-nav__item-content
+        %i.material-icons.height20 exit_to_app
+        EXIT

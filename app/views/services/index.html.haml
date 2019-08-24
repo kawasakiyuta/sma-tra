@@ -14,3 +14,19 @@
             = image_tag "/#{service.id}.jpg", size: "30x30", class: "left marginleft30"
             %span.marginleft30.fontsize15
               #{service.service_name}
+.marginbottom30
+
+.bottomnav  
+  %nav.mobile-bottom-nav
+    = link_to subscriptions_path, method: :get, class: "mobile-bottom-nav__item mobile-bottom-nav__item" do
+      .mobile-bottom-nav__item-content
+        %i.material-icons.height20 folder_shared
+        My Subsc
+    = link_to services_path, method: :get, class: "mobile-bottom-nav__item mobile-bottom-nav__item--active" do
+      .mobile-bottom-nav__item-content
+        %i.material-icons.height20 create_new_folder
+        Add Subsc
+    = link_to destroy_user_session_path, method: :delete, class: "mobile-bottom-nav__item" do
+      .mobile-bottom-nav__item-content
+        %i.material-icons.height20 exit_to_app
+        EXIT
