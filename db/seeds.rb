@@ -10,7 +10,7 @@
 
 Service.create(service_name: 'CookPad', req_email_address: 1, req_password: 1, req_phone: 0, req_birth_date: 0, req_contract_number: 0)
 Service.create(service_name: 'Twitter', req_email_address: 1, req_password: 1, req_phone: 0, req_birth_date: 0, req_contract_number: 0)
-Service.create(service_name: 'Facebook', req_email_address: 1, req_password: 1, req_phone: 0, req_birth_date: 0, req_contract_number: 0)
+Service.create(service_name: 'クレジットカード', req_email_address: 1, req_password: 1, req_phone: 0, req_birth_date: 0, req_contract_number: 0)
 Service.create(service_name: 'Instagram', req_email_address: 1, req_password: 1, req_phone: 0, req_birth_date: 0, req_contract_number: 0)
 Service.create(service_name: 'DAZN', req_email_address: 1, req_password: 1, req_phone: 0, req_birth_date: 0, req_contract_number: 0)
 Service.create(service_name: '朝日新聞', req_email_address: 1, req_password: 1, req_phone: 0, req_birth_date: 0, req_contract_number: 0)
