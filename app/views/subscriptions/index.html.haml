@@ -1,8 +1,9 @@
 - if user_signed_in?
   %h5.center
     %i.material-icons.small.comblue folder_shared
-    %span.comblueb.white-text.radius4.padding2 "My Subscription"
-  %h6.center.title わたしのサブスクリプション
+    %span.comblueb.white-text.radius4.padding2 "My Subscriptions"
+  %h6.center.title 
+    #{@user.cust_last_name}#{@user.cust_first_name} のサブスクリプション
   %blockquote.format
   - @inuse_subscriptions.each do |subscription|
     .card.row.grid-1
@@ -149,7 +150,3 @@
       .mobile-bottom-nav__item-content
         %i.material-icons.height20 create_new_folder
         Add Subsc
-    = link_to destroy_user_session_path, method: :delete, class: "mobile-bottom-nav__item" do
-      .mobile-bottom-nav__item-content
-        %i.material-icons.height20 exit_to_app
-        EXIT
