@@ -13,15 +13,16 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
     %header
-      %nav.z-depth-1
-        .nav-wrapper.white
-          = image_tag '/smatra_logo.jpeg', size: "180x55", class: "brand-logo"
-          %a.sidenav-trigger.comblue{"data-target" => "mobile-demo", :href => ""}
-            %i.material-icons menu
-          %ul.right.hide-on-med-and-down
+      .navbar-fixed
+        %nav.z-depth-1
+          .nav-wrapper.white
+            = image_tag '/smatra_logo.jpeg', size: "180x55", class: "brand-logo"
+            %a.sidenav-trigger.comblue{"data-target" => "mobile-demo", :href => ""}
+              %i.material-icons menu
+            %ul.right.hide-on-med-and-down
 
-        = render 'layouts/sidenav'
-        -# = render 'layouts/bottomnav'
+          = render 'layouts/sidenav'
+          -# = render 'layouts/bottomnav'
 
         
     = yield
