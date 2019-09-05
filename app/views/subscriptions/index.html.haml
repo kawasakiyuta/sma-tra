@@ -4,9 +4,6 @@
   %h5.center
     -# %i.material-icons.small.comblue folder_shared
     %span.comblueb.white-text.radius4.padding2 "Rento's Subscriptions"
-  %h6.center.title 
-    
-    #{@user.cust_last_name}#{@user.cust_first_name} のサブスクリプション
   %blockquote.format
   - @inuse_subscriptions.each do |subscription|
     .card.row.grid-1
